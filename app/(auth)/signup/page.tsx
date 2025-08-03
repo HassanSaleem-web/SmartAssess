@@ -12,16 +12,16 @@ export default function SignUp() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState<string | null>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.id]: e.target.value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
@@ -40,8 +40,8 @@ export default function SignUp() {
       setTimeout(() => {
         window.location.href = "/signin";
       }, 2000);
-    } catch (err) {
-      console.error(err); // Dev-only
+    } catch (err: any) {
+      console.error(err);
       setMessage(`❌ ${err.message}`);
     } finally {
       setLoading(false);
@@ -95,15 +95,14 @@ export default function SignUp() {
                   Work Email <span className="text-red-500">*</span>
                 </label>
                 <input
-  id="email"
-  type="email"
-  className="form-input w-full"
-  placeholder="Your work email"
-  value={formData.email}
-  onChange={handleChange}
-  required
-/>
-
+                  id="email"
+                  type="email"
+                  className="form-input w-full"
+                  placeholder="Your work email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div>
@@ -113,7 +112,7 @@ export default function SignUp() {
                 <input
                   id="password"
                   type="password"
-                  minLength="10"
+                  minLength={10}
                   className="form-input w-full"
                   placeholder="Password (at least 10 characters)"
                   value={formData.password}
