@@ -21,7 +21,7 @@ export default function SignIn() {
     setMessage(null);
 
     try {
-      const res = await fetch("https://backendregister.onrender.com/api/login", {
+      const res = await fetch("https://backendregister-dem3.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -49,7 +49,7 @@ console.log("📦 Saved user to localStorage:", data.user); // ✅ LOG HERE
 
       // 🔁 Redirect to external AI Grader page with query params
       setTimeout(() => {
-        window.location.href = `https://smartassesgrader.onrender.com#name=${name}&email=${email}`;
+        window.location.href = `  https://smartassesgrader-wz54.onrender.com#name=${name}&email=${email}`;
 
       }, 1200);
 
